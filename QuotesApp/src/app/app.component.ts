@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { QuotesListPage } form '../pages/quotes-list/quotes-list';
+import { QuotesListPage } from '../pages/quotes-list/quotes-list';
 import { QuotesDetailPage } from '../pages/quotes-detail/quotes-detail';
 
 import { HomePage } from '../pages/home/home';
