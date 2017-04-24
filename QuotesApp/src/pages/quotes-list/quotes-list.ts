@@ -1,6 +1,9 @@
-import {Http} from '@angular/http';
+import { Component } from '@angular/core';
+import { NavController, IonicPage } from 'ionic-angular';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import {QuotesDetailPage} from '../quotes-detail/quotes-detail';
+import { QuotesDetailPage } from './../quotes-detail';
+
 /**
  * Generated class for the QuotesList page.
  *
@@ -23,7 +26,7 @@ export class QuotesList {
     .map(res => res.json())
     .subscribe(
       data => {
-        this.quoteslist = data.quotes;
+        this.quotesList = data.quotes;
       },
       err => console.log("error is "+err),
       () => console.log('read quotes Complete '+ this.quotesList)
@@ -34,7 +37,7 @@ export class QuotesList {
     console.log('ionViewDidLoad QuotesList');
   }
   searchQuotes(event){
-    if (event.traget.balue.length >2){
+    if (event.traget.value.length >2){
       var filteredJson = this.quotesList.filter(function (row) {
         if(row.author.indexOf(event.target.value) != -1) {
           return true;
@@ -45,6 +48,13 @@ export class QuotesList {
       this.isfiltered = true;
       this.filteredQuotes = filteredJson;
     }
+  }
+
+  itemTapped(event, quote) {
+    console.log(quote);
+    this.navCtrl.push(QuotesDetailPage, {
+      quote: quote
+    });
   }
 
 }

@@ -7,7 +7,7 @@ import { QuotesDetail } from './quotes-detail';
     QuotesDetail,
   ],
   imports: [
-    IonicModule.forChild(QuotesDetail),
+    IonicModule.forRoot(QuotesDetail),
   ],
   exports: [
     QuotesDetail

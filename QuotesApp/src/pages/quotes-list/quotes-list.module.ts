@@ -1,9 +1,8 @@
 import { MyApp } from '../../../../CounterApp/src/app/app.component';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicModule, IonicApp, IonicErrorHandler } from 'ionic-angular';
-import { QuotesList } from './quotes-list';
-import { QuotesListPage } from '../pages/quotes-list/quotes-list';
-import { QuotesDetailPage } from '../pages/quotes-detail/quotes-detail';
+import { QuotesListPage } from './../quotes-list';
+import { QuotesDetailPage } from './../quotes-detail';
 
 @NgModule({
   declarations: [
