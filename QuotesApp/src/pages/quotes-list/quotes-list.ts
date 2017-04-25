@@ -1,60 +1,62 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { QuotesDetailPage } from './../quotes-detail';
+import { QuotesDetailPage } from '../quotes-detail/quotes-detail';
 
-/**
- * Generated class for the QuotesList page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
+/*
+  Generated class for the QuotesList page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+*/
 @Component({
   selector: 'page-quotes-list',
-  templateUrl: 'quotes-list.html',
+  templateUrl: 'quotes-list.html'
 })
-export class QuotesList {
-  quotesList = [];
-  filteredQuotes = [];
-  isfiltered: boolean;
+export class QuotesListPage {
 
-  constructor(private http:Http, private navCtrl: NavController) {
+quotesList = [];
+filteredQuotes = [];
+isfiltered: boolean ;
+
+  constructor(private http:Http, private navController: NavController) {
     this.isfiltered = false;
     this.http.get('quotes.json')
     .map(res => res.json())
     .subscribe(
-      data => {
-        this.quotesList = data.quotes;
-      },
-      err => console.log("error is "+err),
-      () => console.log('read quotes Complete '+ this.quotesList)
+        data => {
+          this.quotesList = data.quotes;
+        },
+        err => console.log("error is "+err), // error
+        () => console.log('read quotes Complete '+ this.quotesList) // complete
     );
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad QuotesList');
+    console.log('ionViewDidLoad QuotesListPage');
   }
-  searchQuotes(event){
-    if (event.traget.value.length >2){
+
+  searchQuotes(event) {
+		if(event.target.value.length > 2) {
       var filteredJson = this.quotesList.filter(function (row) {
         if(row.author.indexOf(event.target.value) != -1) {
-          return true;
+          return true
         } else {
           return false;
         }
-      });
-      this.isfiltered = true;
-      this.filteredQuotes = filteredJson;
-    }
-  }
-
-  itemTapped(event, quote) {
-    console.log(quote);
-    this.navCtrl.push(QuotesDetailPage, {
-      quote: quote
     });
-  }
+    this.isfiltered = true;
+    this.filteredQuotes = filteredJson;
+		}
+	}
+
+itemTapped(event, quote) {
+		console.log(quote);
+		this.navController.push(QuotesDetailPage, {
+			quote: quote
+		});
+	}
 
 }

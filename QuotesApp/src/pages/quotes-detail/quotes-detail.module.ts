@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
-import { QuotesDetail } from './quotes-detail';
+import { QuotesDetail } from './quotes-detail/';
 
 @NgModule({
   declarations: [
